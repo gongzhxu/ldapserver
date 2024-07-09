@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	ldap "github.com/lor00x/goldap/message"
+	ldap "github.com/gongzhxu/goldap/message"
 )
 
 type client struct {
@@ -207,7 +207,7 @@ func (c *client) writeMessage(m *ldap.LDAPMessage) {
 // construct an LDAP response.
 type ResponseWriter interface {
 	// Write writes the LDAPResponse to the connection as part of an LDAP reply.
-	Write(po ldap.ProtocolOp)
+	Write(po ldap.ProtocolResponse)
 }
 
 type responseWriterImpl struct {
@@ -215,7 +215,7 @@ type responseWriterImpl struct {
 	messageID int
 }
 
-func (w responseWriterImpl) Write(po ldap.ProtocolOp) {
+func (w responseWriterImpl) Write(po ldap.ProtocolResponse) {
 	m := ldap.NewLDAPMessageWithProtocolOp(po)
 	m.SetMessageID(w.messageID)
 	w.chanOut <- m

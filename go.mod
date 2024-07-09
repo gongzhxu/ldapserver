@@ -1,5 +1,5 @@
-module github.com/vjeantet/ldapserver
+module github.com/gongzhxu/ldapserver
 
-go 1.14
+go 1.18
 
-require github.com/lor00x/goldap v0.0.0-20180618054307-a546dffdd1a3
+require github.com/gongzhxu/goldap v0.0.0-20240709113814-e24cdf45c430
